@@ -8,12 +8,20 @@ $str = "LaPlateforme";
 // On affiche le contenu de str
 echo $str . "<br>";
 
+// var_dump($str); // affiche type et valeur
+echo "<br><br>";
+
 // Création des variables str2 et str3
 $str2 = "Vive";
 $str3 = "!";
 
 // On concatène et affiche "Vive LaPlateforme !"
 echo $str2 . " " . $str . " " . $str3 . "<br>";
+
+// var_dump($str2);
+// echo "<br>";
+// var_dump($str3);
+// echo "<br><br>";
 
 // -------------------------------
 // 2. Variable numérique
@@ -24,10 +32,16 @@ $val = 6;
 // On affiche le contenu de val
 echo $val . "<br>";
 
+// var_dump($val);
+// echo "<br>";
+
 // On ajoute 4 à val
 $val = $val + 4;
 // On affiche à nouveau la nouvelle valeur
 echo $val . "<br>";
+
+// var_dump($val);
+// echo "<br><br>";
 
 // -------------------------------
 // 3. Variable booléenne
@@ -38,8 +52,14 @@ $myBool = true;
 // Affichage de myBool (true s’affiche comme "1")
 echo $myBool . "<br>";
 
+// var_dump($myBool); // montre bool(true)
+// echo "<br>";
+
 // On affecte false à myBool
 $myBool = false;
 // Affichage de myBool (false n’affiche rien → valeur vide)
 echo $myBool . "<br>";
+
+// var_dump($myBool); // montre bool(false)
+// echo "<br>"; 
 ?>
