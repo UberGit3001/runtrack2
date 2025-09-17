@@ -24,18 +24,48 @@ $variables = [
     <meta charset="UTF-8">
     <title>Job03 - Variables PHP</title>
     <style>
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
         table {
             border-collapse: collapse;
-            width: 50%;
-            margin: 20px auto;
+            width: 60%;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
+
         th, td {
-            border: 1px solid #333;
-            padding: 8px 12px;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
             text-align: center;
         }
+
         th {
-            background-color: #eee;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: #d1d8e0;
+            transition: background 0.3s;
         }
     </style>
 </head>
@@ -51,6 +81,24 @@ $variables = [
             <th>Valeur</th>
         </tr>
     </thead>
+    <tbody>
+        <?php foreach ($variables as $var) : ?>
+            <tr>
+                <td><?= htmlspecialchars($var['type']) ?></td>
+                <td><?= htmlspecialchars($var['nom']) ?></td>
+                <td>
+                    <?php
+                        // Pour afficher true/false comme texte
+                        if (is_bool($var['valeur'])) {
+                            echo $var['valeur'] ? 'true' : 'false';
+                        } else {
+                            echo htmlspecialchars($var['valeur']);
+                        }
+                    ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
     
 </table>
 
