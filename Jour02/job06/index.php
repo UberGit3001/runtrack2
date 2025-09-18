@@ -15,7 +15,7 @@ for ($i = 1; $i <= $hauteur; $i++) {
         // echo str_repeat("-", $largeur) . "\n";
     } else {
         // Print borders with "*" and spaces in between / Affiche les bordures avec "*" et des espaces au milieu
-        echo "*" . str_repeat(" ", $largeur - 2) . "*"  . "\n";
+        echo "*" . str_repeat(" ", $largeur - 2) . "*" . "\n";
         
         // Print borders with "I" and spaces in between / Affiche les bordures avec "I" et des espaces au milieu
         //  echo "I" . str_repeat(" ", $largeur - 2) . "I" . "\n";
