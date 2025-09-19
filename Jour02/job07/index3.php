@@ -16,13 +16,23 @@ for ($i = 1; $i <= $hauteur; $i++) {
     // Affiche la barre oblique gauche
     echo "/";
 
-    // Espaces internes entre les deux barres obliques
-    if ($i == 1) {
-        // Pas d'espace interne à la première ligne
-        // (on n'affiche rien)
-        } else {
-        echo str_repeat("&nbsp;", 2 * ($i - 1) - 1);
+      // Utilisation de switch pour gérer les espaces internes
+    switch ($i) {
+        case 1:
+            // Pas d'espace interne à la première ligne
+            break;
+        default:
+            echo str_repeat("&nbsp;", 2 * $i - 2);
+            break;
     }
+
+    // Espaces internes entre les deux barres obliques
+    // if ($i == 1) {
+    //     // Pas d'espace interne à la première ligne
+    //     // (on n'affiche rien)
+    //     } else {
+    //     echo str_repeat("&nbsp;", 2 * ($i - 1) - 1);
+    // }
 
     // Affiche la barre oblique droite
     echo "\\";
@@ -32,8 +42,24 @@ for ($i = 1; $i <= $hauteur; $i++) {
 
 // Affiche la base du triangle (soulignée)
 echo str_repeat("&nbsp;", 0); // Pas d'espace externe à la base
-echo "/";
-echo str_repeat("_", 2 * $hauteur - 3); // Base soulignée
-echo "\\";
+
+// echo "/";
+echo "";
+
+
+// $baseSoulgne = str_repeat("_", 2 * $hauteur); // Base soulignée
+// $baseSoulgne = str_repeat("_", 2 * $hauteur - 1); // Base soulignée
+
+$baseSoulgne = str_repeat("-", 2 * $hauteur); // Base soulignée
+
+echo $baseSoulgne;
+
+// echo "\\";
+
+
 echo "</pre>";
-?>
+
+
+// echo strlen(str_repeat("-", 2 * $hauteur - 1)); // longueur de la base
+
+echo strlen($baseSoulgne); // longueur de la base
