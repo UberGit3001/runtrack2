@@ -10,6 +10,6 @@ while (isset($str[$count])) {
 
 // Afficher le résultat
 // Display the result
-echo "La chaîne contient $count caractères.";
-echo "\nThe string contains $count characters.";
+echo "<strong><u>En Français :</u> </strong> La chaîne contient $count caractères." . "<br /><br />";
+echo "<strong><u>En Anglais :</u> </strong> The string contains $count characters.";
 ?>
