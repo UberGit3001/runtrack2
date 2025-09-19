@@ -46,9 +46,14 @@ while (isset($str[$i])) {
 }
 
 // Affichage du résultat dans un tableau HTML
+echo "<caption>Nombre de voyelles et consonnes .</caption>";
 echo "<table border='1'>";
+echo "<thead>";
 echo "<tr><th>Type</th><th>Nombre</th></tr>";
+echo "</thead>";
+echo "<tbody>";
 echo "<tr><td>Voyelles</td><td>" . $dic["voyelles"] . "</td></tr>";
 echo "<tr><td>Consonnes</td><td>" . $dic["consonnes"] . "</td></tr>";
+echo "</tbody>";
 echo "</table>";
 ?>
