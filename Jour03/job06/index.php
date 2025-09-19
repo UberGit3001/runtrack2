@@ -1,5 +1,5 @@
 <?php
-$str = "Les choses que l'on possède finissent par nous posséder.";
+$str = "Les choses que l'on possede finissent par nous posseder.";
 $reversed = '';
 
 // Trouver la longueur de la chaîne 
