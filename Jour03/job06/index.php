@@ -2,7 +2,7 @@
 $str = "Les choses que l'on possède finissent par nous posséder.";
 $reversed = '';
 
-// Trouver la longueur de la chaîne sans utiliser strlen()
+// Trouver la longueur de la chaîne 
 $length = 0;
 while (isset($str[$length])) {
     $length++;
