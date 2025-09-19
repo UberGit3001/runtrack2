@@ -25,6 +25,7 @@ foreach ($numbers as $number) {
 <!-- ==============================  
     Fin de la boucle foreach
 ================================ -->
+
 <br />
 <hr />
 <br />
@@ -58,12 +59,13 @@ for ($i = 0; $i < count($numbers); $i++) {
 <!-- ==============================  
     Fin de la boucle for & switch
 ================================ -->
+
 <br />
 <hr />
 <br />
 
 <!-- ==============================  
-    Fin de la boucle while
+    la boucle while
 ================================ -->
 <?php
 echo "<u><h3>Avec une boucle while</h3></u>";
