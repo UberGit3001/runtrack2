@@ -12,9 +12,9 @@ echo "Le nombre d’argument GET envoyé est : " . $nb;
 ?>
 
 <form method="get" action="">
-    <input type="text" name="prenom" placeholder="Votre prénom"><br>
-    <input type="text" name="nom" placeholder="Votre nom"><br>
-    <input type="text" name="age" placeholder="Votre âge"><br>
+    <input type="text" name="prenom" value="" placeholder="Votre prénom"><br>
+    <input type="text" name="nom" value="" placeholder="Votre nom"><br>
+    <input type="text" name="age" value="" placeholder="Votre âge"><br>
     <input type="submit" value="Envoyer">
 </form>
 
