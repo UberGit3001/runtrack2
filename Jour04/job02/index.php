@@ -9,7 +9,7 @@ foreach ($_GET as $argument => $valeur) {
     echo "<td>" . $valeur . "</td>";
     echo "</tr>";
 
-    // clearstatcache(); je sais que c'est une fonction système mais je voulais l'inclure ici pour effacer le cache à chaque itération et reprendre à zéro
+    // clearstatcache(); //je sais que c'est une fonction système mais je voulais l'inclure ici pour effacer le cache à chaque itération et reprendre à zéro
     
 }
 echo "</table>";
