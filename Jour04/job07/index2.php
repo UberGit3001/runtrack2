@@ -5,11 +5,21 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
 
     // Store the width of the house from the form input
     // Stocker la largeur de la maison depuis le formulaire
-    $largeur = $_GET['largeur'];
+    $largeur = (INT) $_GET['largeur'];
 
     // Store the height of the rectangle (body of the house) from the form input
     // Stocker la hauteur du rectangle (corps de la maison) depuis le formulaire
-    $hauteur = $_GET['hauteur'];
+    $hauteur = (INT)$_GET['hauteur'];
+        
+     // Vérifier que les deux valeurs sont positives et non nulles
+    if ($largeur > 0 && $hauteur > 0) {
+        // Ensure width is even for proper triangle alignment
+        // S'assurer que la largeur est paire pour que le triangle soit aligné avec le rectangle
+        if ($largeur % 2 !== 0) {
+            $largeur = $largeur + 1; // add 1 to make it even / ajouter 1 pour la rendre paire
+        }
+
+
 
     // Use <pre> to preserve spaces and line breaks in HTML output
     // Utiliser <pre> pour préserver les espaces et retours à la ligne dans l'affichage HTML
@@ -75,12 +85,12 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
     // Dessiner le bas de la maison (sol)
     echo "|"; // Left side of the floor
     // Côté gauche du sol
-
+   
     for ($j = 0; $j < $largeur; $j++) {
         echo "_"; // Floor horizontal line
         // Ligne horizontale du sol
     }
-   
+
 
     echo "|"; // Right side of the floor
     // Côté droit du sol
@@ -88,6 +98,7 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
     // Close the <pre> tag
     // Fermer la balise <pre>
     echo "</pre>";
+}
 }
 ?>
 
