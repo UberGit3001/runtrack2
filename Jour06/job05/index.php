@@ -28,8 +28,9 @@ if (isset($_GET['style'])) {
 
     <!-- Formulaire -->
     <form method="get">
-        <label for="style">Choisissez un style :</label>
+        <label for="style"><u><b>Choisissez un style :</b></u></label>
         <select name="style" id="style">
+            <option value="">--- Sélectionner votre style préféré ---</option>
             <option value="style1">Style 1</option>
             <option value="style2">Style 2</option>
             <option value="style3">Style 3</option>

@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+    color: limegreen;
+    font-family: "Courier New", monospace;
+}
+form {
+    background: #222;
+    padding: 20px;
+    border: 2px solid limegreen;
+}
+
+select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover{
+    border: none;
+    background-color: limegreen;
+    color: white;
+    font-size:medium;
+    /* font-weight: bold; */
+    cursor: pointer;
+}
+

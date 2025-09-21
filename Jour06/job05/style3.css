@@ -1,0 +1,25 @@
+body {
+    background: pink;
+    font-family: Georgia, serif;
+}
+form {
+    background: #fff0f5;
+    padding: 20px;
+    border: 2px dashed rgb(181, 97, 111) ;
+}
+
+select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(181, 97, 111) ;
+    color: white;
+    font-size: medium;
+    /* font-weight: bold; */
+    cursor: pointer;
+}
