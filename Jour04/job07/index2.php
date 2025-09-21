@@ -13,6 +13,7 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
         
      // Vérifier que les deux valeurs sont positives et non nulles
     if ($largeur > 0 && $hauteur > 0) {
+        
         // Ensure width is even for proper triangle alignment
         // S'assurer que la largeur est paire pour que le triangle soit aligné avec le rectangle
         if ($largeur % 2 !== 0) {
@@ -26,6 +27,7 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
     echo "<pre style='font-family: monospace;'>";
 
     // --- ROOF / TOIT ---
+
     // Loop to create each line of the roof (triangle)
     // Boucler pour créer chaque ligne du toit (triangle)
     for ($i = 0; $i < $largeur; $i += 2) {
@@ -43,7 +45,9 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
         // Add internal spaces between "/" and "\" to form the triangle
         // Ajouter des espaces internes entre "/" et "\" pour former le triangle
         for ($j = 0; $j < $i; $j++) {
-            echo "&nbsp;";
+            echo "_";
+            // echo "-";
+            // echo "&nbsp;";
         }
 
         // Right side of the roof "\"
@@ -54,8 +58,9 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
         // Passer à la ligne suivante
         echo "\n";
     }
-
+    
     // --- WALLS / MURS ---
+
     // Loop to create the body of the house (rectangle)
     // Boucle pour créer le corps de la maison (rectangle)
     for ($h = 0; $h < $hauteur - 1; $h++) {
@@ -81,6 +86,7 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
     }
 
     // --- FLOOR / SOL ---
+
     // Draw the bottom of the house (floor)
     // Dessiner le bas de la maison (sol)
     echo "|"; // Left side of the floor
@@ -103,6 +109,7 @@ if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
 ?>
 
 <!-- FORM / FORMULAIRE -->
+ 
 <!-- HTML form to input (width=largeur) and (height=hauteur) of the house -->
 <!-- Formulaire HTML pour entrer la largeur et la hauteur de la maison -->
 <form method="get">
