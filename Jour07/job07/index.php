@@ -35,6 +35,36 @@ function gras($str) {
     return $result;
 }
 
+// Fonction césar : décale les lettres de $decalage (2 par défaut)
+function cesar($str, $decalage = 2) {
+    $result = "";
+    $i = 0;
+
+    while (isset($str[$i])) {
+        $char = $str[$i];
+
+        // Si c’est une lettre minuscule
+        if ($char >= 'a' && $char <= 'z') {
+            $pos = ord($char) - ord('a'); // position 0-25
+            $newPos = ($pos + $decalage) % 26;
+            $result .= chr($newPos + ord('a'));
+        }
+        // Si c’est une lettre majuscule
+        elseif ($char >= 'A' && $char <= 'Z') {
+            $pos = ord($char) - ord('A');
+            $newPos = ($pos + $decalage) % 26;
+            $result .= chr($newPos + ord('A'));
+        }
+        // Sinon, caractère non alphabétique
+        else {
+            $result .= $char;
+        }
+
+        $i++;
+    }
+
+    return $result;
+}
 
 ?>
 
@@ -57,6 +87,10 @@ if (isset($_POST['str']) && isset($_POST['fonction'])) {
 
     if ($fonction == "gras") {
         echo gras($str);
-    } 
+    } elseif ($fonction == "cesar") {
+        echo cesar($str, 2); 
+} else {
+        echo $str; 
+    }
 }
 ?>
