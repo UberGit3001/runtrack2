@@ -66,6 +66,47 @@ function cesar($str, $decalage = 2) {
     return $result;
 }
 
+// Fonction plateforme : ajoute "_" aux mots finissant par "me"
+function plateforme($str) {
+    $result = "";
+    $word = "";
+    $i = 0;
+
+    while (isset($str[$i])) {
+        $char = $str[$i];
+
+        if ($char != " ") {
+            $word .= $char;
+        } else {
+            // Vérifie si le mot finit par "me"
+            $len = 0;
+            while (isset($word[$len])) $len++;
+
+            if ($len >= 2 && $word[$len - 2] == 'm' && $word[$len - 1] == 'e') {
+                $result .= $word . "_";
+            } else {
+                $result .= $word;
+            }
+            $result .= " ";
+            $word = "";
+        }
+        $i++;
+    }
+
+    // Gérer le dernier mot
+    if ($word != "") {
+        $len = 0;
+        while (isset($word[$len])) $len++;
+
+        if ($len >= 2 && $word[$len - 2] == 'm' && $word[$len - 1] == 'e') {
+            $result .= $word . "_";
+        } else {
+            $result .= $word;
+        }
+    }
+
+    return $result;
+}
 ?>
 
 <!-- Formulaire -->
@@ -89,8 +130,8 @@ if (isset($_POST['str']) && isset($_POST['fonction'])) {
         echo gras($str);
     } elseif ($fonction == "cesar") {
         echo cesar($str, 2); 
-} else {
-        echo $str; 
-    }
+    } elseif ($fonction == "plateforme"){
+        echo plateforme($str);
+    } 
 }
 ?>
