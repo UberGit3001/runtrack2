@@ -19,9 +19,9 @@ if (!isset($_SESSION['nbvisites'])) {
 // 3. Vérifier si le bouton "Reset" a été cliqué
 // ---------------------------------------------
 // Quand on clique sur le bouton du formulaire, $_POST['reset'] est défini.
-// → On réinitialise le compteur à 0
-// → On pose un "drapeau" (just_reset = true) pour indiquer qu'un reset vient d'être fait
-// → On redirige la page en GET (header + exit) pour éviter que le formulaire soit renvoyé en POST à chaque F5
+// réinitialiser le compteur à 0
+// poser un "drapeau" (just_reset = true) pour indiquer qu'un reset vient d'être fait
+// rediriger la page en GET (header + exit) pour éviter que le formulaire soit renvoyé en POST à chaque F5
 if (isset($_POST['reset'])) {
     $_SESSION['nbvisites'] = 0;        // remettre le compteur à zéro
     $_SESSION['just_reset'] = true;    // créer un marqueur temporaire
@@ -32,9 +32,9 @@ if (isset($_POST['reset'])) {
 
 // 4. Incrémenter le compteur si ce n’est pas un reset
 // ---------------------------------------------------
-// Si "just_reset" N'EST PAS défini, c’est une visite normale → on incrémente.
+// Si "just_reset" N'EST PAS défini, c’est une visite normale on incrémente.
 // Si "just_reset" est défini, cela veut dire qu’on sort juste d’un reset
-// → dans ce cas, on ne veut pas incrémenter immédiatement.
+//  dans ce cas, on ne veut pas incrémenter immédiatement.
 if (!isset($_SESSION['just_reset'])) {
     $_SESSION['nbvisites']++;
 }
