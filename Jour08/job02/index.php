@@ -36,5 +36,5 @@ setcookie("nbvisites", $nbvisites, time() + 3600);
 
 <?php
 // debug : voir le contenu du cookie
-var_dump($_COOKIE);
+// var_dump($_COOKIE);
 ?>
