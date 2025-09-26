@@ -166,6 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="msg">
         <span class="winner <?= $winner ?>"><?= htmlspecialchars($winner) ?></span> a gagné !
     </div>
+    
 <?php else: ?>
     <div class="msg"><?= htmlspecialchars($message) ?></div>
 <?php endif; ?>
