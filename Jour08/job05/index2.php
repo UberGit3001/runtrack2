@@ -103,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         font-size: 28px;
         border-radius: 25px;
         border: none;
+        /* border: 2px solid orangered; */
         background: transparent;
         cursor: pointer;
     }
@@ -110,6 +111,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         background: #ececec;
     }
 
+    p>.bouton-reset {
+        border: 3px solid orangered;
+        color: orangered;
+    }
+    p>.bouton-reset:hover {
+        /* border: 3px solid orangered; */
+        border: none;
+        color: white;
+        background-color: orangered;
+    }
     /* Symboles .X */
     .X  {
         color: #18bc9c;   /* rouge vif */
@@ -137,9 +148,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     font-size: 20px;
 }
 
-.msg .winner {
+/* .msg .winner {
     font-weight: bold;
     font-size: 20px;
+} */
+
+/* Encadrer le gagnant */
+.msg.winner-box {
+    display: inline-block;
+    border: 3px solid #18bc9c; /* couleur neutre par défaut, on peut changer selon X ou O */
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: #f0fdf9; /* fond léger assorti */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .msg .X {
@@ -158,25 +181,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (strpos($message, 'a gagné') !== false): ?>
     <?php
         // extraire le gagnant
-        $winner = $board[0]; // par défaut
+        //$winner = $board[0]; // par défaut
+        $winner = 'X'; // par défaut
         if (preg_match('/^(X|O) a gagné/', $message, $matches)) {
             $winner = $matches[1];
         }
+        $winnerColor = ($winner === 'X') ? '#18bc9c' : '#457b9d';
+        $winnerBg = ($winner === 'X') ? '#f0fdf9' : '#e6f0fa';
     ?>
-    <div class="msg">
-        <span class="winner <?= $winner ?>"><?= htmlspecialchars($winner) ?></span> a gagné !
+
+    <div class="msg winner-box" style="border-color: <?= $winnerColor ?>; background: <?= $winnerBg ?>;">
+        <span class="<?= $winner ?>"><?= htmlspecialchars($winner) ?></span> a gagné !
+
+        <!-- <span class="winner <?= $winner ?>"><?= htmlspecialchars($winner) ?></span> a gagné ! -->
     </div>
-    
-<?php else: ?>
+
+    <?php else: ?>
     <div class="msg"><?= htmlspecialchars($message) ?></div>
-<?php endif; ?>
+    <?php endif; ?>
+
+    <!-- =================================================== -->
 
 <?php else: ?>
-    <div class="msg">
+    <div class="msg winner-box">
         Joueur courant : 
         <span class="player <?= $next ?>"><?= htmlspecialchars($next) ?></span>
     </div>
-
 <?php endif; ?>
 
 <form method="post">
@@ -208,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </tr>
     </table>
 
-    <p><button type="submit" name="reset">Réinitialiser la partie</button></p>
+    <p><button class="bouton-reset" type="submit" name="reset">Réinitialiser la partie</button></p>
 </form>
 </body>
 </html>
