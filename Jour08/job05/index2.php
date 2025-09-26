@@ -137,6 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     font-size: 20px;
 }
 
+.msg .winner {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .msg .X {
     color: #18bc9c;  /* la même couleur que ton X sur la grille */
 }
@@ -150,9 +155,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <h2>Jeu du Morpion</h2>
 <?php if ($message !== ''): ?>
-    <div class="msg"><?= htmlspecialchars($message) ?></div>
+    <?php if (strpos($message, 'a gagné') !== false): ?>
+    <?php
+        // extraire le gagnant
+        $winner = $board[0]; // par défaut
+        if (preg_match('/^(X|O) a gagné/', $message, $matches)) {
+            $winner = $matches[1];
+        }
+    ?>
+    <div class="msg">
+        <span class="winner <?= $winner ?>"><?= htmlspecialchars($winner) ?></span> a gagné !
+    </div>
 <?php else: ?>
-    <div class="msg">Joueur courant : <?= htmlspecialchars($next) ?></div>
+    <div class="msg"><?= htmlspecialchars($message) ?></div>
+<?php endif; ?>
+
+<?php else: ?>
+    <div class="msg">
+        Joueur courant : 
+        <span class="player <?= $next ?>"><?= htmlspecialchars($next) ?></span>
+    </div>
+
 <?php endif; ?>
 
 <form method="post">
