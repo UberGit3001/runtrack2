@@ -14,12 +14,13 @@ if ($mysqli->connect_errno) {
     die("Échec de la connexion : " . $mysqli->connect_error);
 }
 
-// ====================================================================================
-// Requête pour récupérer touts les champs la table etudiants qui ont moins de 18 ans =======================================================================================
+// ========================================================================================
+// Requête pour récupérer touts les champs de la table etudiants qui ont moins de 18 ans 
+// =======================================================================================
 
 $sql = "SELECT * FROM etudiants WHERE DATE_ADD(naissance, INTERVAL 18 YEAR) > CURDATE()";
 
-
+// $sql = "SELECT * FROM etudiants WHERE DATE_ADD(NOW(), INTERVAL -18 YEAR) >= naissance";
 $result = $mysqli->query($sql);
 
 // =================================================
