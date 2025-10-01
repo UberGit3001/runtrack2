@@ -1,10 +1,10 @@
 <?php
 
-
 // =======================================
 // Connexion à la base de données jour09
 // =======================================
-$mysqli = new mysqli("localhost", "root", "", "jour09");
+
+$mysqli = new mysqli(hostname:"localhost", username:"root", password:"", database:"jour09");
 
 // =================================
 // Vérification de la connexion
@@ -15,12 +15,12 @@ if ($mysqli->connect_errno) {
 }
 
 // ======================================================================
-// Requête pour récupérer les champs nom et capacite de la table salles
+// Requête pour récupérer les champs prenom, nom et naissance de la table 
+// etudiants dont le sexe est 'Femme'
 // ======================================================================
 
-$sql = "SELECT nom, capacite FROM salles";
+$sql = "SELECT prenom, nom, naissance FROM etudiants WHERE sexe = 'Femme'";
 $result = $mysqli->query($sql);
-
 
 // =================================================
 // Vérification du résultat si la requête a réussi
@@ -30,7 +30,6 @@ if (!$result) {
     die("Erreur dans la requête : " . $mysqli->error);
 }
 
-
 // =============================================================== 
 // Récupérer les résultats sous forme de tableau associatif
 // ===============================================================
@@ -38,23 +37,15 @@ if (!$result) {
 $rows = $result->fetch_all(MYSQLI_ASSOC);
 
 
-// =========================
-// Générer le tableau HTML
-// =========================
-
+// =============
 echo "<table border='1' cellpadding='5' cellspacing='0'>";
-
 echo "<thead><tr>";
-
-// ================================================
-// Afficher les noms des colonnes - nom, capacite
-// ================================================
-
+// Afficher les noms des colonnes - prenom, nom, naissance
 foreach (array_keys($rows[0]) as $colName) {
     echo "<th>" . htmlspecialchars($colName) . "</th>";
-}
+}   
 
-echo "</tr></thead><tbody>";
+echo "</tr></thead>";
 
 // ==============================
 // Générer le corps du tableau
@@ -62,19 +53,19 @@ echo "</tr></thead><tbody>";
 
 echo "<tbody>";
 
+// =======================
+// Affichage des données
+// =======================
+
 foreach ($rows as $row) {
     echo "<tr>";
-    foreach ($row as $cell) {
-        echo "<td>" . htmlspecialchars($cell) . "</td>";
+    foreach ($row as $value) {
+        echo "<td>" . htmlspecialchars($value) . "</td>";
     }
     echo "</tr>";
 }
 
-echo "</tbody>";
-
-echo "</table>";
-
-
+echo "</tbody></table>";
 
 // ===========================================
 // Libérer la mémoire et fermer la connexion
@@ -83,5 +74,6 @@ echo "</table>";
 $result->free();
 
 $mysqli->close();
+
 
 ?>
