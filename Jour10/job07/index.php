@@ -2,40 +2,41 @@
 // =======================================
 // Connexion à la base de données jour09
 // =======================================
-
 $mysqli = new mysqli("localhost", "root", "", "jour09");
+
 
 // =================================
 // Vérification de la connexion
 // =================================
-
 if ($mysqli->connect_errno) {
     die("Échec de la connexion : " . $mysqli->connect_error);
 }
 
 // ==========================================================
-// Requête pour Requête SQL pour compter le nombre étudiants
+// Requête SQL : somme des superficies des étages
 // ==========================================================
-
-$sql = "SELECT COUNT(*) AS nb_etudiants FROM etudiants";
+$sql = "SELECT SUM(superficie) AS superficie_totale FROM etage";
 $result = $mysqli->query($sql);
 
 if (!$result) {
-    die("Erreur lors de la requête : " . $mysqli->error);
+    die("Erreur dans la requête : " . $mysqli->error);
 }
 
 // =================================================
 // Vérification du résultat si la requête a réussi
 // =================================================
-// Récupération des données
+// Récupération du résultat
 // =================================================
 $row = $result->fetch_assoc();
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Nombre d'étudiants</title>
+<title>Superficie Totale des Étages</title>
 <style>
     table {
         border-collapse: collapse;
@@ -49,16 +50,16 @@ $row = $result->fetch_assoc();
 </style>
 </head>
 <body>
-<h2>Nombre total d'étudiants</h2>
+<h2>Superficie totale des étages</h2>
 <table>
     <thead>
         <tr>
-            <th>nb_etudiants</th>
+            <th>superficie_totale</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><?= $row['nb_etudiants'] ?></td>
+            <td><?= $row['superficie_totale'] ?></td>
         </tr>
     </tbody>
 </table>
@@ -66,12 +67,9 @@ $row = $result->fetch_assoc();
 </html>
 
 <?php
-
 // ===========================================
 // Libérer la mémoire et fermer la connexion
 // ===========================================
 $result->free();
 $mysqli->close();
 ?>
-
-
